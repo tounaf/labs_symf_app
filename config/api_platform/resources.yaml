@@ -1,0 +1,14 @@
+resources:
+    App\Entity\User:
+        attributes:
+            normalization_context:
+                groups: ['read']
+            denormalization_context:
+                groups: ['write']
+  
+    App\Entity\Vola:
+        attributes:
+            normalization_context:
+                groups: ['read']
+            denormalization_context:
+                groups: ['write']
