@@ -31,9 +31,3 @@ resources:
                 groups: ['entry:read']
             denormalization_context:
                 groups: ['entry:write']
-    App\Entity\Group:
-        attributes:
-            normalization_context:
-                groups: ['group:read']
-            denormalization_context:
-                groups: ['group:write']
