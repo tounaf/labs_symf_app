@@ -1,0 +1,12 @@
+App\Entity\Entry:
+    attributes:
+        id:
+            groups: ['entry:read']
+        amount:
+            groups: ['entry:read', 'entry:write']
+        description:
+            groups: ['entry:read', 'entry:write']
+        type:
+            groups: ['entry:read', 'entry:write']
+        date:
+            groups: ['entry:read', 'entry:write']

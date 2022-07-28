@@ -2,13 +2,38 @@ resources:
     App\Entity\User:
         attributes:
             normalization_context:
-                groups: ['read']
+                groups: ['user:read']
             denormalization_context:
-                groups: ['write']
+                groups: ['user:write']
   
     App\Entity\Vola:
         attributes:
             normalization_context:
-                groups: ['read']
+                groups: ['vola:read']
             denormalization_context:
-                groups: ['write']
+                groups: ['vola:write']
+    App\Entity\Group:
+        attributes:
+            normalization_context:
+                groups: ['group:read']
+            denormalization_context:
+                groups: ['group:write']
+
+    App\Entity\Account:
+        attributes:
+            normalization_context:
+                groups: ['account:read']
+            denormalization_context:
+                groups: ['account:write']
+    App\Entity\Entry:
+        attributes:
+            normalization_context:
+                groups: ['entry:read']
+            denormalization_context:
+                groups: ['entry:write']
+    App\Entity\Group:
+        attributes:
+            normalization_context:
+                groups: ['group:read']
+            denormalization_context:
+                groups: ['group:write']

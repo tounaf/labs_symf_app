@@ -1,10 +1,10 @@
 App\Entity\Vola:
     attributes:
         id:
-            groups: ['read']
+            groups: ['vola:read']
         montant:
-            groups: ['read', 'write']
+            groups: ['vola:read', 'vola:write']
         description:
-            groups: ['read', 'write']
+            groups: ['vola:read', 'vola:write']
         type:
-            groups: ['read', 'write']
+            groups: ['vola:read', 'vola:write']

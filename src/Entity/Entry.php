@@ -28,6 +28,9 @@ class Entry
     #[ORM\ManyToOne(inversedBy: 'entries')]
     private ?Account $account = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +80,18 @@ class Entry
     public function setAccount(?Account $account): self
     {
         $this->account = $account;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

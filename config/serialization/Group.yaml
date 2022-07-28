@@ -1,0 +1,6 @@
+App\Entity\Group:
+    attributes:
+        id:
+            groups: ['group:read']
+        name:
+            groups: ['group:read', 'group:write']
