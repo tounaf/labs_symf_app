@@ -4,3 +4,5 @@ App\Entity\Group:
             groups: ['group:read']
         name:
             groups: ['group:read', 'group:write']
+        association:
+            groups: ['group:read', 'group:write']

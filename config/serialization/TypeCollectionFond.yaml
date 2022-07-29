@@ -1,0 +1,6 @@
+App\Entity\TypeCollectionFond:
+    attributes:
+        id:
+            groups: ['typecollectionfond:read']
+        name:
+            groups: ['typecollectionfond:read', 'typecollectionfond:write']

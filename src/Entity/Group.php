@@ -22,13 +22,12 @@ class Group
     #[ORM\OneToMany(mappedBy: 'groupe', targetEntity: User::class)]
     private Collection $users;
 
-    #[ORM\OneToMany(mappedBy: 'groupe', targetEntity: Account::class)]
-    private Collection $accounts;
+    #[ORM\ManyToOne(inversedBy: 'groups')]
+    private ?Association $association = null;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->accounts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -78,32 +77,14 @@ class Group
         return $this;
     }
 
-    /**
-     * @return Collection<int, Account>
-     */
-    public function getAccounts(): Collection
+    public function getAssociation(): ?Association
     {
-        return $this->accounts;
+        return $this->association;
     }
 
-    public function addAccount(Account $account): self
+    public function setAssociation(?Association $association): self
     {
-        if (!$this->accounts->contains($account)) {
-            $this->accounts[] = $account;
-            $account->setGroupe($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAccount(Account $account): self
-    {
-        if ($this->accounts->removeElement($account)) {
-            // set the owning side to null (unless already changed)
-            if ($account->getGroupe() === $this) {
-                $account->setGroupe(null);
-            }
-        }
+        $this->association = $association;
 
         return $this;
     }

@@ -1,6 +1,0 @@
-App\Entity\Account:
-    attributes:
-        id:
-            groups: ['group:read']
-        accountNumber:
-            groups: ['group:read']

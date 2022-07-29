@@ -10,3 +10,7 @@ App\Entity\Entry:
             groups: ['entry:read', 'entry:write']
         date:
             groups: ['entry:read', 'entry:write']
+        user:
+            groups: ['entry:read', 'entry:write']
+        typeCollectionFond:
+            groups: ['entry:read', 'entry:write']

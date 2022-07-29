@@ -2,13 +2,11 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\EntryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EntryRepository::class)]
-#[ApiResource]
 class Entry
 {
     #[ORM\Id]
@@ -25,11 +23,15 @@ class Entry
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\ManyToOne(inversedBy: 'entries')]
-    private ?Account $account = null;
-
     #[ORM\Column(length: 50)]
     private ?string $type = null;
+
+    #[ORM\ManyToOne(inversedBy: 'entries')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'entries')]
+    private ?TypeCollectionFond $typeCollectionFond = null;
 
     public function getId(): ?int
     {
@@ -72,17 +74,6 @@ class Entry
         return $this;
     }
 
-    public function getAccount(): ?Account
-    {
-        return $this->account;
-    }
-
-    public function setAccount(?Account $account): self
-    {
-        $this->account = $account;
-
-        return $this;
-    }
 
     public function getType(): ?string
     {
@@ -92,6 +83,30 @@ class Entry
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTypeCollectionFond(): ?TypeCollectionFond
+    {
+        return $this->typeCollectionFond;
+    }
+
+    public function setTypeCollectionFond(?TypeCollectionFond $typeCollectionFond): self
+    {
+        $this->typeCollectionFond = $typeCollectionFond;
 
         return $this;
     }

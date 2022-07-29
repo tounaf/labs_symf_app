@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -43,6 +45,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Group $groupe = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Entry::class)]
+    private Collection $entries;
+
+    #[ORM\ManyToMany(targetEntity: Association::class, inversedBy: 'users')]
+    private Collection $associations;
+
+    public function __construct()
+    {
+        $this->entries = new ArrayCollection();
+        $this->associations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,6 +184,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGroupe(?Group $groupe): self
     {
         $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Entry>
+     */
+    public function getEntries(): Collection
+    {
+        return $this->entries;
+    }
+
+    public function addEntry(Entry $entry): self
+    {
+        if (!$this->entries->contains($entry)) {
+            $this->entries[] = $entry;
+            $entry->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntry(Entry $entry): self
+    {
+        if ($this->entries->removeElement($entry)) {
+            // set the owning side to null (unless already changed)
+            if ($entry->getUser() === $this) {
+                $entry->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Association>
+     */
+    public function getAssociations(): Collection
+    {
+        return $this->associations;
+    }
+
+    public function addAssociation(Association $association): self
+    {
+        if (!$this->associations->contains($association)) {
+            $this->associations[] = $association;
+        }
+
+        return $this;
+    }
+
+    public function removeAssociation(Association $association): self
+    {
+        $this->associations->removeElement($association);
 
         return $this;
     }

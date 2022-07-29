@@ -1,0 +1,1 @@
+INSERT INTO association (name,code) value ('Sampana Lehilahy','SAMPANA_LEHILAHY')
