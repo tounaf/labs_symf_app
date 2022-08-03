@@ -12,3 +12,5 @@ App\Entity\User:
             groups: ['user:read', 'user:write']
         phoneNumber:
             groups: ['user:read', 'user:write']
+        groupe:
+            groups: ['user:read', 'user:write']
