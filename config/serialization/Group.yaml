@@ -6,3 +6,7 @@ App\Entity\Group:
             groups: ['group:read', 'group:write']
         association:
             groups: ['group:read', 'group:write']
+        users:
+            groups: ['group:read', 'group:write']
+        usersCount:
+            groups: ['group:read', 'group:write']

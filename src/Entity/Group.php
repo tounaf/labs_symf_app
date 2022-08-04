@@ -25,9 +25,16 @@ class Group
     #[ORM\ManyToOne(inversedBy: 'groups')]
     private ?Association $association = null;
 
+    private int $usersCount = 0;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+    }
+
+    public function getUsersCount(): ?int
+    {
+        return $this->usersCount = count($this->users);
     }
 
     public function getId(): ?int

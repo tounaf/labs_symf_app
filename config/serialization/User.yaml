@@ -1,11 +1,11 @@
 App\Entity\User:
     attributes:
         id:
-            groups: ['user:read']
+            groups: ['user:read','group:read']
         username:
-            groups: ['user:read', 'user:write']
+            groups: ['user:read', 'user:write','group:read']
         firstname:
-            groups: ['user:read', 'user:write']
+            groups: ['user:read', 'user:write','group:read']
         lastname:
             groups: ['user:read', 'user:write']
         address:
