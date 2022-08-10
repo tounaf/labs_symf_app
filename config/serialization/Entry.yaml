@@ -1,16 +1,16 @@
 App\Entity\Entry:
     attributes:
         id:
-            groups: ['entry:read', 'user:read']
+            groups: ['entry:read', 'user:read','group:read']
         amount:
-            groups: ['entry:read', 'entry:write', 'user:read']
+            groups: ['entry:read', 'entry:write', 'user:read','group:read']
         description:
-            groups: ['entry:read', 'entry:write', 'user:read']
+            groups: ['entry:read', 'entry:write', 'user:read','group:read']
         type:
-            groups: ['entry:read', 'entry:write', 'user:read']
+            groups: ['entry:read', 'entry:write', 'user:read','group:read']
         date:
-            groups: ['entry:read', 'entry:write', 'user:read']
+            groups: ['entry:read', 'entry:write', 'user:read','group:read']
         user:
             groups: ['entry:read', 'entry:write']
         typeCollectionFond:
-            groups: ['entry:read', 'entry:write', 'user:read']
+            groups: ['entry:read', 'entry:write', 'user:read','group:read']

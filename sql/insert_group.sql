@@ -1,10 +1,1 @@
-INSERT INTO `group` (name,association_id) values 
-('Andranovelona',(SELECT id from association where id = 1)),
-
-('Andoharanofotsy',(SELECT id from association where id = 1)),
-
-('Ankaraobato',(SELECT id from association where id = 1)),
-
-('Ifarihy',(SELECT id from association where id = 1)),
-
-('Anjomakely',(SELECT id from association where id = 1))
+"INSERT INTO `group` (name,association_id) values ('Andranovelona',1),('Andoharanofotsy',1),('Ankaraobato',1),('Ifarihy',1),('Anjomakely',1);"
