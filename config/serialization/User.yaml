@@ -12,6 +12,8 @@ App\Entity\User:
             groups: ['user:read', 'user:write']
         phoneNumber:
             groups: ['user:read', 'user:write']
+        totalAmountUser:
+            groups: ['user:read', 'group:read']
         groupe:
             groups: ['user:read', 'user:write']
         entries:

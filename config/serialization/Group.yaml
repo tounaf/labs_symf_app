@@ -10,3 +10,5 @@ App\Entity\Group:
             groups: ['group:read', 'group:write']
         usersCount:
             groups: ['group:read', 'group:write']
+        totalAmountGroup:
+            groups: ['group:read']

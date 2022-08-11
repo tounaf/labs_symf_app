@@ -52,10 +52,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Association::class, inversedBy: 'users')]
     private Collection $associations;
 
+    private int $totalAmountUser = 0;
+
     public function __construct()
     {
         $this->entries = new ArrayCollection();
         $this->associations = new ArrayCollection();
+    }
+
+    public function getTotalAmountUser(): ?int
+    {
+        $entries = $this->entries->getValues();
+        $this->totalAmountUser = array_reduce($entries, function($total, $item){
+            return $total += $item->getAmount();             
+            }, $this->totalAmountUser);
+        return $this->totalAmountUser;
     }
 
     public function getId(): ?int

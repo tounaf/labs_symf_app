@@ -27,6 +27,8 @@ class Group
 
     private int $usersCount = 0;
 
+    private int $totalAmountGroup = 0;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -35,6 +37,20 @@ class Group
     public function getUsersCount(): ?int
     {
         return $this->usersCount = count($this->users);
+    }
+
+    public function getTotalAmountGroup(): ?int
+    {
+        $users = $this->users->getValues();
+        $sum = 0;
+        $this->totalAmountGroup = array_reduce($users, function($total, $item) use($sum){
+            $entries = $item->getEntries()->getValues();
+            $sum = array_reduce($entries, function($total, $item) use($sum){
+                return $total += $item->getAmount();             
+                }, $sum);
+            return $total += $sum;             
+        }, $this->totalAmountGroup);
+        return $this->totalAmountGroup;
     }
 
     public function getId(): ?int
