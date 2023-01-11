@@ -12,3 +12,15 @@ resources:
                 groups: ['read']
             denormalization_context:
                 groups: ['write']
+    App\Entity\Produit:
+        attributes:
+            normalization_context:
+                groups: ['produit:read']
+            denormalization_context:
+                groups: ['produit:write']
+    App\Entity\Attribut:
+        attributes:
+            normalization_context:
+                groups: ['attribut:read']
+            denormalization_context:
+                groups: ['attribut:write']

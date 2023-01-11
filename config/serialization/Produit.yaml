@@ -1,0 +1,14 @@
+App\Entity\Produit:
+    attributes:
+        id:
+            groups: ['produit:read']
+        nom:
+            groups: ['produit:read', 'produit:write']
+        description:
+            groups: ['produit:read', 'produit:write']
+        quantite:
+            groups: ['produit:read', 'produit:write']
+        prix:
+            groups: ['produit:read', 'produit:write']
+        prixVente:
+            groups: ['produit:read', 'produit:write']
